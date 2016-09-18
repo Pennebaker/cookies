@@ -1,7 +1,10 @@
 <?php
-namespace Craft;
+namespace craft\plugins\cookies\services;
 
-class Cookies_UtilsService extends BaseApplicationComponent
+use Craft;
+use craft\app\base\Component;
+
+class CookiesService extends Component
 {
 
 /* --------------------------------------------------------------------------------
@@ -32,7 +35,7 @@ class Cookies_UtilsService extends BaseApplicationComponent
     {
         if ($name == "")
         {
-            craft()->request->deleteCookie($name);
+            Craft::$app->request->deleteCookie($name);
         }
         else
         {
@@ -42,21 +45,21 @@ class Cookies_UtilsService extends BaseApplicationComponent
                 $expire = (int)(time() - 3600);
             $cookie = new HttpCookie($name, '');
 
-            $cookie->value = craft()->security->hashData(base64_encode(serialize($value)));
+            $cookie->value = Craft::$app->security->hashData(base64_encode(serialize($value)));
             $cookie->expire = $expire;
             $cookie->path = $path;
             $cookie->domain = $domain;
             $cookie->secure = $secure;
             $cookie->httpOnly = $httponly;
 
-            craft()->request->getCookies()->add($cookie->name, $cookie);
+            Craft::$app->request->getCookies()->add($cookie->name, $cookie);
         }
     } /* -- setSecure */
 
     public function getSecure($name = "")
     {
-        $cookie = craft()->request->getCookie($name);
-        if ($cookie && !empty($cookie->value) && ($data = craft()->security->validateData($cookie->value)) !== false)
+        $cookie = Craft::$app->request->getCookie($name);
+        if ($cookie && !empty($cookie->value) && ($data = Craft::$app->security->validateData($cookie->value)) !== false)
         {
             return @unserialize(base64_decode($data));
         }

@@ -1,5 +1,7 @@
 <?php
-namespace Craft;
+namespace craft\plugins\cookies\variables;
+
+use craft\plugins\cookies\services\CookiesService;
 
 class CookiesVariable
 {
@@ -10,22 +12,22 @@ class CookiesVariable
 
     function set($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
-		craft()->cookies_utils->set($name, $value, $expire, $path, $domain, $secure, $httponly);
+		Cookies::$plugin->cookies->set($name, $value, $expire, $path, $domain, $secure, $httponly);
     } /* -- set */
 
     function get($name)
     {
-		return craft()->cookies_utils->get($name);
+		return Cookies::$plugin->cookies->get($name);
     } /* -- get */
 
     function setSecure($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
-		craft()->cookies_utils->setSecure($name, $value, $expire, $path, $domain, $secure, $httponly);
+		Cookies::$plugin->cookies->setSecure($name, $value, $expire, $path, $domain, $secure, $httponly);
     } /* -- setSecure */
 
     function getSecure($name)
     {
-		return craft()->cookies_utils->getSecure($name);
+		return Cookies::$plugin->cookies->getSecure($name);
     } /* -- getSecure */
 
 }

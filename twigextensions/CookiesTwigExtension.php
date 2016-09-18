@@ -1,8 +1,9 @@
 <?php 
-namespace Craft;
+namespace craft\plugins\cookies\twigextensions;
 
 use Twig_Extension;
 use Twig_Filter_Method;
+use craft\plugins\cookies\services\CookiesService;
 
 class CookiesTwigExtension extends \Twig_Extension
 {
@@ -21,47 +22,35 @@ class CookiesTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'setCookie' => new \Twig_Filter_Method($this, 'setCookie_filter'),
-            'getCookie' => new \Twig_Filter_Method($this, 'getCookie_filter'),
-            'setSecureCookie' => new \Twig_Filter_Method($this, 'setSecureCookie_filter'),
-            'getSecureCookie' => new \Twig_Filter_Method($this, 'getSecureCookie_filter'),
+            new \Twig_SimpleFilter('setCookie', [$this, 'setCookie']),
+            new \Twig_SimpleFilter('getCookie', [$this, 'getCookie']),
+            new \Twig_SimpleFilter('setSecureCookie', [$this, 'setSecureCookie']),
+            new \Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
         );
     } /* -- getFilters */
-
-/* -- Return our twig functions */
-
-    public function getFunctions()
-    {
-        return array(
-            'setCookie' => new \Twig_Function_Method($this, 'setCookie_filter'),
-            'getCookie' => new \Twig_Function_Method($this, 'getCookie_filter'),
-            'setSecureCookie' => new \Twig_Function_Method($this, 'setSecureCookie_filter'),
-            'getSecureCookie' => new \Twig_Function_Method($this, 'getSecureCookie_filter'),
-        );
-    } /* -- getFunctions */
 
 /* --------------------------------------------------------------------------------
 	Filters
 -------------------------------------------------------------------------------- */
 
-    public function setCookie_filter($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
+    public function setCookie($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
-		craft()->cookies_utils->set($name, $value, $expire, $path, $domain, $secure, $httponly);
-    } /* -- setCookie_filter */
+		Cookies::$plugin->cookies->set($name, $value, $expire, $path, $domain, $secure, $httponly);
+    } /* -- setCookie */
 
-    public function getCookie_filter($name)
+    public function getCookie($name)
     {
-		return craft()->cookies_utils->get($name);
-    } /* -- getCookie_filter */
+		return Cookies::$plugin->cookies->get($name);
+    } /* -- getCookie */
 
-    public function setSecureCookie_filter($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
+    public function setSecureCookie($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
-		craft()->cookies_utils->setSecure($name, $value, $expire, $path, $domain, $secure, $httponly);
-    } /* -- setSecureCookie_filter */
+		Cookies::$plugin->cookies->setSecure($name, $value, $expire, $path, $domain, $secure, $httponly);
+    } /* -- setSecureCookie */
 
-    public function getSecureCookie_filter($name)
+    public function getSecureCookie($name)
     {
-		return craft()->cookies_utils->getSecure($name);
-    } /* -- getSecureCookie_filter */
+		return Cookies::$plugin->cookies->getSecure($name);
+    } /* -- getSecureCookie */
 
 } /* -- CookiesTwigExtension */
