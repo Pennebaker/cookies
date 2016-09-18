@@ -11,6 +11,16 @@ class CookiesService extends Component
     Standard cookies
 -------------------------------------------------------------------------------- */
 
+    /**
+     * Set a cookie
+     * @param string  $name     [description]
+     * @param string  $value    [description]
+     * @param integer $expire   [description]
+     * @param string  $path     [description]
+     * @param string  $domain   [description]
+     * @param boolean $secure   [description]
+     * @param boolean $httponly [description]
+     */
     public function set($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
         $expire = (int) $expire;
@@ -21,6 +31,11 @@ class CookiesService extends Component
         $_COOKIE[$name] = $value;
      } /* -- set */
 
+    /**
+     * Get a cookie
+     * @param  string $name [description]
+     * @return string       [description]
+     */
     public function get($name = "")
     {
         if(isset($_COOKIE[$name]))
@@ -31,6 +46,16 @@ class CookiesService extends Component
     Security validated cookies
 -------------------------------------------------------------------------------- */
 
+    /**
+     * Set a secure cookie
+     * @param string  $name     [description]
+     * @param string  $value    [description]
+     * @param integer $expire   [description]
+     * @param string  $path     [description]
+     * @param string  $domain   [description]
+     * @param boolean $secure   [description]
+     * @param boolean $httponly [description]
+     */
     public function setSecure($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
         if ($name == "")
@@ -52,17 +77,22 @@ class CookiesService extends Component
             $cookie->secure = $secure;
             $cookie->httpOnly = $httponly;
 
-            Craft::$app->request->getCookies()->add($cookie->name, $cookie);
+            Craft::$app->request->cookies->add($cookie->name, $cookie);
         }
     } /* -- setSecure */
 
+    /**
+     * Get a secure cookie
+     * @param  string $name [description]
+     * @return string       [description]
+     */
     public function getSecure($name = "")
     {
-        $cookie = Craft::$app->request->getCookie($name);
+        $cookie = Craft::$app->request->cookies->get($name);
         if ($cookie && !empty($cookie->value) && ($data = Craft::$app->security->validateData($cookie->value)) !== false)
         {
             return @unserialize(base64_decode($data));
         }
     } /* -- getSecure */
 
-} /* -- Cookies_UtilsService */
+} /* -- CookiesService */

@@ -158,6 +158,11 @@ All three of these methods accomplish the same thing:
 
 ## Changelog
 
+### 1.1.0 -- 2016.09.16
+
+* [Added] Ported the plugin to Craft 3
+* [Improved] Updated the README.md
+
 ### 1.0.4 -- 2016.04.06
 
 * [Fixed] Saner default values for cookies

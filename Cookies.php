@@ -9,6 +9,24 @@ use craft\plugins\cookies\twigextensions\CookiesTwigExtension;
 class Cookies extends \craft\app\base\Plugin
 {
     /**
+     * Static property that is an instance of this plugin class so that it can be accessed via Cookies::$plugin
+     * @var craft\plugins\cookies\Cookies
+     */
+    public static $plugin;
+
+    /**
+     * Set our $plugin static property to this class so that it can be accessed via Cookies::$plugin
+     * @param array $config [description]
+     */
+    public function __construct($id, $parent = null, $config = [])
+    {
+        static::$plugin = $this;
+        static::setInstance($this);
+
+        parent::__construct($id, $parent, $config);
+    }
+
+    /**
      * Add in our Twig extensions
      * @return mixed|null The \Twig_Extension to be added to the Twig environment.
      */
