@@ -7,10 +7,6 @@ use craft\plugins\cookies\Cookies;
 class CookiesVariable
 {
 
-/* --------------------------------------------------------------------------------
-	Variables
--------------------------------------------------------------------------------- */
-
     /**
      * Set a cookie
      * @param string  $name     [description]

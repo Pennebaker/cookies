@@ -7,10 +7,6 @@ use craft\app\base\Component;
 class CookiesService extends Component
 {
 
-/* --------------------------------------------------------------------------------
-    Standard cookies
--------------------------------------------------------------------------------- */
-
     /**
      * Set a cookie
      * @param string  $name     [description]
@@ -42,10 +38,6 @@ class CookiesService extends Component
             return $_COOKIE[$name];
     } /* -- get */
 
-/* --------------------------------------------------------------------------------
-    Security validated cookies
--------------------------------------------------------------------------------- */
-
     /**
      * Set a secure cookie
      * @param string  $name     [description]
@@ -60,7 +52,7 @@ class CookiesService extends Component
     {
         if ($name == "")
         {
-            Craft::$app->request->deleteCookie($name);
+            Craft::$app->request->cookies->delete($name);
         }
         else
         {

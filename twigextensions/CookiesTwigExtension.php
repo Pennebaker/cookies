@@ -7,17 +7,19 @@ use craft\plugins\cookies\services\CookiesService;
 class CookiesTwigExtension extends \Twig_Extension
 {
 
-/* --------------------------------------------------------------------------------
-	Expose our filters and functions
--------------------------------------------------------------------------------- */
-
+    /**
+     * Return our Twig Extension name
+     * @return string [description]
+     */
     public function getName()
     {
         return 'Cookies';
     }
 
-/* -- Return our twig filters */
-
+    /**
+     * Return our Twig filters
+     * @return array [description]
+     */
     public function getFilters()
     {
         return array(
@@ -28,8 +30,10 @@ class CookiesTwigExtension extends \Twig_Extension
         );
     } /* -- getFilters */
 
-/* -- Return our twig functions */
-
+    /**
+     * Return our Twig functions
+     * @return array [description]
+     */
     public function getFunctions()
     {
         return array(
@@ -39,10 +43,6 @@ class CookiesTwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
         );
     } /* -- getFunctions */
-
-/* --------------------------------------------------------------------------------
-	Filters
--------------------------------------------------------------------------------- */
 
     /**
      * Set a cookie

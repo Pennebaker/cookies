@@ -7,7 +7,7 @@ This plugin is inspired the [Lj_cookies](https://github.com/lewisjenkins/craft-l
 **Installation**
 
 1. Download & unzip the file and place the `cookies` directory into your `craft/plugins` directory
-2.  -OR- do a `git clone https://github.com/khalwat/cookies.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
+2.  -OR- do a `git clone https://github.com/nystudio107/cookies.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
 3. Install plugin in the Craft Control Panel under Settings > Plugins
 4. The plugin folder should be named `cookies` for Craft to see it.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
@@ -17,7 +17,7 @@ All three of these methods accomplish the same thing:
 
 	{# Set the cookie using 'setCookie' function #}
     {{ setCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
-    
+
 	{# Set the cookie using 'setCookie' filter #}
     {{ NAME | setCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
 
@@ -37,7 +37,7 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 
     {% 'marvin' | setCookie('martian', now | date_modify("+30 days").timestamp ) %}
     {# Sets a cookie to expire in 30 days. #}
-	
+
     {% do craft.cookies.set('marvin', 'martian', '', '/foo/' ) %}
     {# Cookie available within /foo/ directory and sub-directories. #}
 
@@ -47,7 +47,7 @@ All three of these methods accomplish the same thing:
 
 	{# Set the cookie using 'setSecureCookie' function #}
     {{ setSecureCookie( NAME, VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
-    
+
 	{# Set the cookie using 'setSecureCookie' filter #}
     {{ NAME | setSecureCookie( VALUE, DURATION, PATH, DOMAIN, SECURE, HTTPONLY) }}
 
@@ -65,7 +65,7 @@ All of the parameters except for `NAME` are optional.  The `PATH` defaults to `/
 
     {{ 'marvin' | setSecureCookie('martian', now | date_modify("+30 days").timestamp ) }}
     {# Sets a cookie to expire in 30 days. #}
-	
+
     {% do craft.cookies.setSecure('marvin', 'martian', '', '/foo/' ) %}
     {# Cookie available within /foo/ directory and sub-directories. #}
 
@@ -75,7 +75,7 @@ Both of these methods accomplish the same thing:
 
 	{# Get the cookie using 'getCookie' function #}
     {{ getCookie( NAME ) }}
-    
+
 	{# Get the cookie using 'get' variable #}
     {% do craft.cookies.get( NAME ) %}
 
@@ -98,7 +98,7 @@ Both of these methods accomplish the same thing:
 
 	{# Get the cookie using 'getSecureCookie' function #}
     {{ getSecureCookie( NAME ) }}
-    
+
 	{# Get the cookie using 'getSecure' variable #}
     {% do craft.cookies.getSecure( NAME ) %}
 
@@ -129,14 +129,14 @@ This function works the same as `getCookie` but it uses `craft()->request->getCo
 		{% set myCookie = getSecureCookie('marvin') %}
 		{{ myCookie }}
 	{% endif %}
-	
+
 ## Deleting cookies
 
 All three of these methods accomplish the same thing:
 
 	{# Delete a cookie by passing no VALUE to 'setCookie' function #}
     {{ setCookie( NAME ) }}
-    
+
 	{# Delete a cookie by passing no VALUE to 'setCookie' filter #}
     {{ NAME | setCookie() }}
 
@@ -149,7 +149,7 @@ All three of these methods accomplish the same thing:
 
 	{# Delete a cookie by passing no VALUE to 'setSecureCookie' function #}
     {{ setSecureCookie( NAME ) }}
-    
+
 	{# Delete a cookie by passing no VALUE to 'setSecureCookie' filter #}
     {{ NAME | setSecureCookie() }}
 
