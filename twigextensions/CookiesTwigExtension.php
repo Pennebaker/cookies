@@ -37,10 +37,10 @@ class CookiesTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFilter('setCookie', [$this, 'setCookie']),
-            new \Twig_SimpleFilter('getCookie', [$this, 'getCookie']),
-            new \Twig_SimpleFilter('setSecureCookie', [$this, 'setSecureCookie']),
-            new \Twig_SimpleFilter('getSecureCookie', [$this, 'getSecureCookie']),
+            new \Twig_SimpleFunction('setCookie', [$this, 'setCookie']),
+            new \Twig_SimpleFunction('getCookie', [$this, 'getCookie']),
+            new \Twig_SimpleFunction('setSecureCookie', [$this, 'setSecureCookie']),
+            new \Twig_SimpleFunction('getSecureCookie', [$this, 'getSecureCookie']),
         );
     } /* -- getFunctions */
 
