@@ -1,9 +1,24 @@
 <?php
+/**
+ * Cookies plugin for Craft CMS 3.x
+ *
+ * @link      https://nystudio107.com/
+ * @copyright Copyright (c) 2017 nystudio107
+ * @license   MIT License https://opensource.org/licenses/MIT
+ */
+
 namespace nystudio107\cookies\variables;
 
 use Craft;
 use nystudio107\cookies\Cookies;
 
+/**
+ * Cookies template variables
+ *
+ * @author    nystudio107
+ * @package   Cookies
+ * @since     1.1.0
+ */
 class CookiesVariable
 {
 

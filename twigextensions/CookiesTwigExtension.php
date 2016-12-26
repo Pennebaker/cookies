@@ -1,4 +1,12 @@
 <?php
+/**
+ * Cookies plugin for Craft CMS 3.x
+ *
+ * @link      https://nystudio107.com/
+ * @copyright Copyright (c) 2017 nystudio107
+ * @license   MIT License https://opensource.org/licenses/MIT
+ */
+
 namespace nystudio107\cookies\twigextensions;
 
 use nystudio107\cookies\Cookies;
@@ -6,6 +14,13 @@ use nystudio107\cookies\services\CookiesService;
 
 use Craft;
 
+/**
+ * Cookies twig extension
+ *
+ * @author    nystudio107
+ * @package   Cookies
+ * @since     1.1.0
+ */
 class CookiesTwigExtension extends \Twig_Extension
 {
 
