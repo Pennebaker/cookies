@@ -1,8 +1,8 @@
 <?php
-namespace craft\plugins\cookies\variables;
+namespace nystudio107\cookies\variables;
 
 use Craft;
-use craft\plugins\cookies\Cookies;
+use nystudio107\cookies\Cookies;
 
 class CookiesVariable
 {
@@ -17,7 +17,7 @@ class CookiesVariable
      * @param boolean $secure   [description]
      * @param boolean $httponly [description]
      */
-    function set($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
+    public function set($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
 		Cookies::$plugin->cookies->set($name, $value, $expire, $path, $domain, $secure, $httponly);
     } /* -- set */
@@ -27,7 +27,7 @@ class CookiesVariable
      * @param  string $name [description]
      * @return string       [description]
      */
-    function get($name)
+    public function get($name)
     {
 		return Cookies::$plugin->cookies->get($name);
     } /* -- get */
@@ -42,7 +42,7 @@ class CookiesVariable
      * @param boolean $secure   [description]
      * @param boolean $httponly [description]
      */
-    function setSecure($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
+    public function setSecure($name = "", $value = "", $expire = 0, $path = "/", $domain = "", $secure = false, $httponly = false)
     {
 		Cookies::$plugin->cookies->setSecure($name, $value, $expire, $path, $domain, $secure, $httponly);
     } /* -- setSecure */
@@ -52,7 +52,7 @@ class CookiesVariable
      * @param  string $name [description]
      * @return string       [description]
      */
-    function getSecure($name)
+    public function getSecure($name)
     {
 		return Cookies::$plugin->cookies->getSecure($name);
     } /* -- getSecure */

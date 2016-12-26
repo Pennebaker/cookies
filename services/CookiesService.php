@@ -1,8 +1,8 @@
 <?php
-namespace craft\plugins\cookies\services;
+namespace nystudio107\cookies\services;
 
 use Craft;
-use craft\app\base\Component;
+use craft\base\Component;
 
 class CookiesService extends Component
 {

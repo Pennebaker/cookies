@@ -1,8 +1,10 @@
 <?php
-namespace craft\plugins\cookies\twigextensions;
+namespace nystudio107\cookies\twigextensions;
+
+use nystudio107\cookies\Cookies;
+use nystudio107\cookies\services\CookiesService;
 
 use Craft;
-use craft\plugins\cookies\services\CookiesService;
 
 class CookiesTwigExtension extends \Twig_Extension
 {

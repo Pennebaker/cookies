@@ -1,12 +1,14 @@
 <?php
-namespace craft\plugins\cookies;
+namespace nystudio107\cookies;
 
-use craft\plugins\cookies\twigextensions\CookiesTwigExtension;
+use nystudio107\cookies\twigextensions\CookiesTwigExtension;
+
+use Craft;
 
 /**
  * Class Cookies
  */
-class Cookies extends \craft\app\base\Plugin
+class Cookies extends \craft\base\Plugin
 {
     /**
      * Static property that is an instance of this plugin class so that it can be accessed via Cookies::$plugin
@@ -27,12 +29,38 @@ class Cookies extends \craft\app\base\Plugin
     }
 
     /**
-     * Add in our Twig extensions
-     * @return mixed|null The \Twig_Extension to be added to the Twig environment.
+     * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
+     *
+     * craft()->on('entries.saveEntry', function(Event $event) {
+     *    // ...
+     * });
+     *
+     * or loading any third party Composer packages via:
+     *
+     * require_once __DIR__ . '/vendor/autoload.php';
+     *
+     * @return mixed
      */
-    public function addTwigExtension()
+    public function init()
     {
-        return new CookiesTwigExtension();
+        parent::init();
+        $this->name = $this->getName();
+
+        /**
+         * Add in our Twig extensions
+         */
+        Craft::$app->view->twig->addExtension(new CookiesTwigExtension());
+    }
+
+    /**
+     * Returns the user-facing name of the plugin, which can override the name in
+     * plugin.json
+     *
+     * @return mixed
+     */
+    public function getName()
+    {
+         return Craft::t('cookies', 'Cookies');
     }
 
     /**
@@ -41,9 +69,9 @@ class Cookies extends \craft\app\base\Plugin
      * @return mixed|null The component definition to be registered.
      * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
      */
-    public function getVariableDefinition()
+    public function defineTemplateComponent()
     {
-        return 'craft\plugins\cookies\variables\CookiesVariable';
+        return 'nystudio107\cookies\variables\CookiesVariable';
     }
 
 }
