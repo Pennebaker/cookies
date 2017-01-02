@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-          "nystudio107\\cookies\\": ""
+          "nystudio107\\cookies\\": "src/"
         }
     },
     "extra": {
