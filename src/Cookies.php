@@ -29,33 +29,19 @@ class Cookies extends \craft\base\Plugin
     public static $plugin;
 
     /**
-     * Set our $plugin static property to this class so that it can be accessed via Cookies::$plugin
-     * @param array $config [description]
-     */
-    public function __construct($id, $parent = null, $config = [])
-    {
-        static::$plugin = $this;
-        static::setInstance($this);
-
-        parent::__construct($id, $parent, $config);
-    }
-
-    /**
-     * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
+     * Set our $plugin static property to this class so that it can be accessed via
+     * Cookies::$plugin
      *
-     * craft()->on('entries.saveEntry', function(Event $event) {
-     *    // ...
-     * });
+     * Called after the plugin class is instantiated; do any one-time initialization
+     * here such as hooks and events.
      *
-     * or loading any third party Composer packages via:
-     *
-     * require_once __DIR__ . '/vendor/autoload.php';
-     *
-     * @return mixed
+     * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
+     * you do not need to load it in your init() method.
      */
     public function init()
     {
         parent::init();
+        self::$plugin = $this;
         $this->name = $this->getName();
 
         /**
